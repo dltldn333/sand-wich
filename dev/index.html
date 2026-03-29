@@ -52,7 +52,11 @@
 
     <script type="module">
       import SandwichRenderer from "../dist/index.js";
-      const renderer = new SandwichRenderer();
+
+      const renderer = new SandwichRenderer({
+        frontSelector: ".front",
+        midId: "mid",
+      });
       renderer.init();
     </script>
   </body>

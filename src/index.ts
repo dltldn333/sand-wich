@@ -79,6 +79,7 @@ export default class SandwichRenderer {
     if (!this.frontLayer) return;
 
     frontElements.forEach((el) => {
+      const rect = el.getBoundingClientRect();
       const originalStyle = window.getComputedStyle(el);
       const placeholder = document.createElement("div");
 
@@ -87,15 +88,16 @@ export default class SandwichRenderer {
 
       Object.assign(placeholder.style, {
         display: originalStyle.display,
+
         width: originalStyle.width,
         height: originalStyle.height,
+
         marginTop: originalStyle.marginTop,
         marginBottom: originalStyle.marginBottom,
         marginLeft: originalStyle.marginLeft,
         marginRight: originalStyle.marginRight,
-        padding: originalStyle.padding,
-        border: originalStyle.border,
-        boxSizing: originalStyle.boxSizing,
+        // padding: originalStyle.padding, 
+
         flex: originalStyle.flex,
         alignSelf: originalStyle.alignSelf,
         float: originalStyle.float,
@@ -115,10 +117,12 @@ export default class SandwichRenderer {
 
       // 실제 요소를 Layer 3로 텔레포트
       this.frontLayer!.appendChild(el);
+
       Object.assign(el.style, {
         position: "fixed", // viewport 기준 절대 좌표
         margin: "0",
         pointerEvents: "auto",
+
         width: originalStyle.width,
         height: originalStyle.height,
         boxSizing: originalStyle.boxSizing,
