@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sand Telepochi Test</title>
+    <style>
+      body {
+        height: 200vh;
+        font-family: sans-serif;
+        background: #f0f0f0;
+      }
+      .box {
+        padding: 50px;
+        border: 2px solid #ccc;
+        margin: 20px;
+        background: white;
+      }
+      .front {
+        background: coral;
+        color: white;
+        padding: 20px;
+        font-weight: bold;
+        border-radius: 8px;
+      }
+      #mid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <p>Base Layer Element</p>
+      <div class="front">I am FRONT 1 (Should be above Mid)</div>
+    </div>
+
+    <div id="mid">MID LAYER (Sandwich Filling)</div>
+
+    <div class="box" style="margin-left: 100px">
+      <p>Another Base Element</p>
+      <div class="front">I am FRONT 2 (Also above Mid)</div>
+    </div>
+
+    <script type="module">
+      import SandwichRenderer from "../src/index.js";
+      const renderer = new SandwichRenderer();
+      renderer.init();
+    </script>
+  </body>
+</html>

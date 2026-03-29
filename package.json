@@ -2,23 +2,41 @@
   "name": "sand-telepochi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "files": [
-    "index.js"
+    "dist"
   ],
   "scripts": {
+    "build": "tsup src/index.js --format cjs,esm --clean",
+    "dev": "tsup src/index.js --format cjs,esm --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dltldn333/sand-wich.git"
+    "url": "git+https://github.com/dltldn333/sand-telepochi.git"
   },
-  "keywords": ["dom", "portal", "z-index", "renderer"],
-  "author": "",
+  "keywords": [
+    "dom",
+    "portal",
+    "z-index",
+    "renderer"
+  ],
+  "author": "dltldn333",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dltldn333/sand-wich/issues"
+    "url": "https://github.com/dltldn333/sand-telepochi/issues"
   },
-  "homepage": "https://github.com/dltldn333/sand-wich#readme"
+  "homepage": "https://github.com/dltldn333/sand-telepochi#readme",
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.2"
+  }
 }
