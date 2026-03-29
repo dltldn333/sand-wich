@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/dltldn333/sand-telepochi#readme",
   "devDependencies": {
-    "tsup": "^8.5.1"
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.2"
   }
 }
