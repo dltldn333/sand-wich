@@ -80,28 +80,23 @@ export default class SandwichRenderer {
 
     frontElements.forEach((el) => {
       const rect = el.getBoundingClientRect();
-      const originalStyle = window.getComputedStyle(el);
+      const computed = window.getComputedStyle(el);
       const placeholder = document.createElement("div");
 
       // It's crucial to copy styles to ensure the placeholder perfectly occupies the original element's space.
       placeholder.className = "sand-placeholder";
 
       Object.assign(placeholder.style, {
-        display: originalStyle.display,
+        display:
+          computed.display === "inline" ? "inline-block" : computed.display,
+        width: `${rect.width}px`,
+        height: `${rect.height}px`,
+        boxSizing: "border-box",
+        marginTop: computed.marginTop,
+        marginBottom: computed.marginBottom,
+        marginLeft: computed.marginLeft,
+        marginRight: computed.marginRight,
 
-        width: originalStyle.width,
-        height: originalStyle.height,
-
-        marginTop: originalStyle.marginTop,
-        marginBottom: originalStyle.marginBottom,
-        marginLeft: originalStyle.marginLeft,
-        marginRight: originalStyle.marginRight,
-        // padding: originalStyle.padding, 
-
-        flex: originalStyle.flex,
-        alignSelf: originalStyle.alignSelf,
-        float: originalStyle.float,
-        // It occupies space but is invisible
         visibility: "hidden",
         pointerEvents: "none",
       });
@@ -119,13 +114,13 @@ export default class SandwichRenderer {
       this.frontLayer!.appendChild(el);
 
       Object.assign(el.style, {
-        position: "fixed", // viewport 기준 절대 좌표
+        position: "fixed",
         margin: "0",
-        pointerEvents: "auto",
+        boxSizing: "border-box",
+        width: `${rect.width}px`,
+        height: `${rect.height}px`,
 
-        width: originalStyle.width,
-        height: originalStyle.height,
-        boxSizing: originalStyle.boxSizing,
+        pointerEvents: "auto",
       });
 
       this.items.push({ placeholder, original: el });
