@@ -63,6 +63,7 @@ class SandwichRenderer {
 
       // [중요] Placeholder가 원래 요소의 자리를 완벽히 지키도록 속성 복사
       placeholder.className = 'sand-placeholder';
+      
       placeholder.style.display = originalStyle.display;
       placeholder.style.width = originalStyle.width;
       placeholder.style.height = originalStyle.height;
@@ -78,7 +79,7 @@ class SandwichRenderer {
         position: 'fixed', // viewport 기준 절대 좌표
         margin: '0',
         pointerEvents: 'auto',
-        boxSizing: 'border-box' // 레이아웃 계산 오차 방지
+        // boxSizing: 'border-box' // 레이아웃 계산 오차 방지
       });
 
       this.items.push({ placeholder, original: el });
